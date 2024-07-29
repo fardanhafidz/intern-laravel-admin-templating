@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -15,5 +16,9 @@ Route::post('/register', [RegisterController::class, 'actionRegister'])->name('a
 
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+
+    Route::resource('/book', BookController::class);
+    Route::resource('/category', BookController::class);
+
     Route::delete('/logout', [LoginController::class, 'actionLogout'])->name('actionLogout');
 });

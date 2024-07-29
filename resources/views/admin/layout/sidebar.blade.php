@@ -12,17 +12,18 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Library Item</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="components-alerts.html">
-                        <i class="bi bi-circle"></i><span>Component 1</span>
+                    <a href="{{ route('book.index') }}">
+                        <i class="bi bi-circle"></i><span>Book</span>
                     </a>
                 </li>
                 <li>
-                    <a href="components-accordion.html">
-                        <i class="bi bi-circle"></i><span>Component 2</span>
+                    <a href="{{ route('category.index') }}l">
+                        <i class="bi bi-circle"></i><span>Category</span>
                     </a>
                 </li>
             </ul>
