@@ -13,7 +13,7 @@ Route::post('/login', [LoginController::class, 'actionLogin'])->name('actionLogi
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'actionRegister'])->name('actionRegister');
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::delete('/logout', [LoginController::class, 'actionLogout'])->name('actionLogout');
 });
