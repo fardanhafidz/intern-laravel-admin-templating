@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -18,7 +19,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('/book', BookController::class);
-    Route::resource('/category', BookController::class);
+    Route::resource('/category', CategoryController::class);
 
     Route::delete('/logout', [LoginController::class, 'actionLogout'])->name('actionLogout');
 });

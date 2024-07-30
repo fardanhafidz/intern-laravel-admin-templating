@@ -9,39 +9,39 @@
                 </div>
             @endif
 
-            <h5 class="card-title">Books Data Table</h5>
-            <a href="{{ route('book.create') }}" class="btn btn-primary my-3"><i class="bi bi-journal-plus"></i> Add
-                Book</a>
+            <h5 class="card-title">Categories Data Table</h5>
+            <a href="{{ route('category.create') }}" class="btn btn-primary my-3"><i class="bi bi-journal-plus"></i> Create
+                Category</a>
 
-            @if ($books)
+            @if ($categories)
                 <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Cover</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">ISBN</th>
-                            <th scope="col">Description</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Book/s</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($books as $book)
+                        @foreach ($categories as $category)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $category->name }}</td>
                                 <td>
-                                    @if ($book->cover)
-                                        <img src="/storage/books/{{ $book->cover }}" style="max-height: 100px">
+                                    @if (count($category->books) > 1)
+                                        <span class="badge bg-dark"><i class="bi bi-bookmark-check me-1"></i>
+                                            {{ count($category->books) }}</span>
+                                    @elseif (count($category->books) == 1)
+                                        <span class="badge bg-dark"><i class="bi bi-bookmark-check me-1"></i>
+                                            {{ count($category->books) }}</span>
                                     @else
-                                        <img src="/storage/books/book-default-cover.jpg" style="max-height: 100px">
+                                        <span class="badge bg-secondary"><i class="bi bi-bookmark-x me-1"></i>
+                                            {{ count($category->books) }}</span>
                                     @endif
                                 </td>
-                                <td>{{ $book->title }}</td>
-                                <td><span class="badge bg-dark">{{ $book->category->name }}</span></td>
-                                <td>{{ $book->isbn }}</td>
-                                <td>{{ Str::limit($book->description, 75, '...') }}</td>
-                                <td><a href="{{ route('book.show', $book->id) }}" type="button"
+                                <td>
+                                    <a href="{{ route('category.show', $category->id) }}" type="button"
                                         class="btn btn-info text-white">Detail</a>
                                 </td>
                             </tr>
@@ -51,9 +51,9 @@
             @else
                 {{-- Start | Catatan ketika terjadi kesalahan pengambilan data --}}
                 <div class="alert alert-warning  alert-dismissible fade show" role="alert">
-                    <h4 class="alert-heading">Data Buku Belum tersedia</h4>
-                    <p>Terjadi kesalahan ketika mencoba mengambil data buku, kemungkinan yang dapat terjadi yaitu tidak
-                        adanya data buku yang tersimpan atau adanya bug di sistem yang kami jalankan.</p>
+                    <h4 class="alert-heading">Data Kategori Belum tersedia</h4>
+                    <p>Terjadi kesalahan ketika mencoba mengambil data kategori, kemungkinan yang dapat terjadi yaitu tidak
+                        adanya data kategori yang tersimpan atau adanya bug di sistem yang kami jalankan.</p>
                     <hr>
                     <p class="mb-0">Tolong hubungi admin atau service center kami terkait kesalahan ini, terima kasih.</p>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

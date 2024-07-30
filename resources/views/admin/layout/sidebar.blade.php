@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('category.index') }}l">
+                    <a href="{{ route('category.index') }}">
                         <i class="bi bi-circle"></i><span>Category</span>
                     </a>
                 </li>
